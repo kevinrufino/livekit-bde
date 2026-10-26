@@ -1,26 +1,166 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import '../styles/tokens.css';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:where([data-dk-theme='dark'], [data-dk-theme='dark'] *));
+@custom-variant light (&:where([data-dk-theme='light'], [data-dk-theme='light'] *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --breakpoint-*: initial;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  --text-*: initial;
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.25rem;
+  --text-sm--letter-spacing: 0.01em;
+  --text-base: 1rem;
+  --text-base--line-height: 1.7rem;
+  --text-base--letter-spacing: 0.01em;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 2rem;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2rem;
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: 2.25rem;
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: 2.5rem;
+  --text-5xl: 3rem;
+  --text-5xl--line-height: 1;
+  --text-6xl: 3.75rem;
+  --text-6xl--line-height: 1;
+  --text-7xl: 4.5rem;
+  --text-7xl--line-height: 1;
+  --text-8xl: 6rem;
+  --text-8xl--line-height: 1;
+
+  --font-weight-*: initial;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --font-*: initial;
+  --font-sans: var(--font-dk-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-dk-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: var(--font-dk-display), ui-sans-serif, system-ui, sans-serif;
+
+  /* Only DeadKit colors are available — Tailwind's default palette is removed. */
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-white: var(--dk-color-white);
+  --color-black: var(--dk-color-black);
+
+  --color-pumpkin-100: var(--dk-color-pumpkin-100);
+  --color-pumpkin-200: var(--dk-color-pumpkin-200);
+  --color-pumpkin-300: var(--dk-color-pumpkin-300);
+  --color-pumpkin-400: var(--dk-color-pumpkin-400);
+  --color-pumpkin-500: var(--dk-color-pumpkin-500);
+  --color-pumpkin-600: var(--dk-color-pumpkin-600);
+  --color-pumpkin-700: var(--dk-color-pumpkin-700);
+  --color-pumpkin-800: var(--dk-color-pumpkin-800);
+  --color-pumpkin-900: var(--dk-color-pumpkin-900);
+
+  --color-purple-100: var(--dk-color-purple-100);
+  --color-purple-200: var(--dk-color-purple-200);
+  --color-purple-300: var(--dk-color-purple-300);
+  --color-purple-400: var(--dk-color-purple-400);
+  --color-purple-500: var(--dk-color-purple-500);
+  --color-purple-600: var(--dk-color-purple-600);
+  --color-purple-700: var(--dk-color-purple-700);
+  --color-purple-800: var(--dk-color-purple-800);
+  --color-purple-900: var(--dk-color-purple-900);
+
+  --color-gray-100: var(--dk-color-gray-100);
+  --color-gray-200: var(--dk-color-gray-200);
+  --color-gray-300: var(--dk-color-gray-300);
+  --color-gray-400: var(--dk-color-gray-400);
+  --color-gray-500: var(--dk-color-gray-500);
+  --color-gray-600: var(--dk-color-gray-600);
+  --color-gray-700: var(--dk-color-gray-700);
+  --color-gray-800: var(--dk-color-gray-800);
+  --color-gray-900: var(--dk-color-gray-900);
+
+  --color-green-300: var(--dk-color-green-300);
+  --color-green-500: var(--dk-color-green-500);
+  --color-amber-300: var(--dk-color-amber-300);
+  --color-amber-500: var(--dk-color-amber-500);
+  --color-red-400: var(--dk-color-red-400);
+  --color-red-500: var(--dk-color-red-500);
+
+  --color-fg0: var(--dk-color-fg0);
+  --color-fg1: var(--dk-color-fg1);
+  --color-fg2: var(--dk-color-fg2);
+  --color-fg3: var(--dk-color-fg3);
+  --color-fg4: var(--dk-color-fg4);
+  --color-fgAccent1: var(--dk-color-fgAccent1);
+  --color-fgAccent2: var(--dk-color-fgAccent2);
+  --color-fgSecondary1: var(--dk-color-fgSecondary1);
+  --color-fgSuccess: var(--dk-color-fgSuccess);
+  --color-fgModerate: var(--dk-color-fgModerate);
+  --color-fgSerious: var(--dk-color-fgSerious);
+
+  --color-bg0: var(--dk-color-bg0);
+  --color-bg1: var(--dk-color-bg1);
+  --color-bg2: var(--dk-color-bg2);
+  --color-bg3: var(--dk-color-bg3);
+  --color-bgAccent1: var(--dk-color-bgAccent1);
+  --color-bgAccent2: var(--dk-color-bgAccent2);
+  --color-bgSecondary1: var(--dk-color-bgSecondary1);
+  --color-bgSuccess: var(--dk-color-bgSuccess);
+  --color-bgModerate: var(--dk-color-bgModerate);
+  --color-bgSerious: var(--dk-color-bgSerious);
+
+  --color-separator1: var(--dk-color-separator1);
+  --color-separator2: var(--dk-color-separator2);
+  --color-separatorAccent: var(--dk-color-separatorAccent);
+
+  --radius-*: initial;
+  --radius-none: 0px;
+  --radius-sm: 0.125rem;
+  --radius: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-full: 9999px;
+
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    @apply border-separator1;
+  }
+
+  body {
+    @apply bg-bg1 font-sans text-fg1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+
+  button,
+  [role='button'] {
+    cursor: pointer;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .bg-dot-pattern {
+    background-image: radial-gradient(var(--dk-color-separator1) 1px, transparent 1px);
+    background-size: 12px 12px;
+  }
 }

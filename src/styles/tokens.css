@@ -1,0 +1,158 @@
+/*
+ * DeadKit design tokens.
+ *
+ * Two layers:
+ *   1. Raw colors  — the palette. Never changes between themes.
+ *   2. Semantic    — what a color is *for*. Resolves differently in light and dark.
+ *
+ * Prefer semantic tokens (`bg-bg1`, `text-fg2`, `border-separator1`) in components.
+ * Reach for raw colors (`bg-pumpkin-500`) only for brand moments where the color is
+ * the point, not the role.
+ *
+ * Theme is set with a data attribute high in the tree: <html data-dk-theme="dark">
+ */
+
+:root {
+  /* Raw colors ------------------------------------------------------------ */
+  --dk-color-white: #ffffff;
+  --dk-color-black: #000000;
+
+  /* Primary brand. pumpkin-500 is DeadKit Orange. */
+  --dk-color-pumpkin-100: #fee1cd;
+  --dk-color-pumpkin-200: #fdcaa5;
+  --dk-color-pumpkin-300: #fcaf78;
+  --dk-color-pumpkin-400: #fa954c;
+  --dk-color-pumpkin-500: #f97a1f;
+  --dk-color-pumpkin-600: #db5e06;
+  --dk-color-pumpkin-700: #a44704;
+  --dk-color-pumpkin-800: #6d2f03;
+  --dk-color-pumpkin-900: #321501;
+
+  /* Secondary accent */
+  --dk-color-purple-100: #f2e4fb;
+  --dk-color-purple-200: #eabffd;
+  --dk-color-purple-300: #dc85ff;
+  --dk-color-purple-400: #ba1ff9;
+  --dk-color-purple-500: #9a1ace;
+  --dk-color-purple-600: #7a15a2;
+  --dk-color-purple-700: #591077;
+  --dk-color-purple-800: #390b4b;
+  --dk-color-purple-900: #190620;
+
+  /* Status */
+  --dk-color-green-100: #d1fadf;
+  --dk-color-green-200: #b8efd1;
+  --dk-color-green-300: #23de6b;
+  --dk-color-green-400: #1eb66a;
+  --dk-color-green-500: #009e4f;
+  --dk-color-green-600: #00753b;
+  --dk-color-green-700: #006430;
+  --dk-color-green-800: #003213;
+  --dk-color-green-900: #001905;
+
+  --dk-color-amber-100: #faedd1;
+  --dk-color-amber-200: #fbdfb1;
+  --dk-color-amber-300: #ffb752;
+  --dk-color-amber-400: #ffa424;
+  --dk-color-amber-500: #ef8b01;
+  --dk-color-amber-600: #9d4d06;
+  --dk-color-amber-700: #833e01;
+  --dk-color-amber-800: #3f2208;
+  --dk-color-amber-900: #1a0e04;
+
+  --dk-color-red-100: #fae6e6;
+  --dk-color-red-200: #ffcdc7;
+  --dk-color-red-300: #ffa9a0;
+  --dk-color-red-400: #ff7566;
+  --dk-color-red-500: #fa4c39;
+  --dk-color-red-600: #b32909;
+  --dk-color-red-700: #791b11;
+  --dk-color-red-800: #421510;
+  --dk-color-red-900: #1f0e0b;
+}
+
+/* Semantic: dark (default) ------------------------------------------------- */
+:root,
+[data-dk-theme='dark'] {
+  color-scheme: dark;
+
+  /* Grays are theme-dependent: dark ramp here, light ramp below. */
+  --dk-color-gray-100: #cccccc;
+  --dk-color-gray-200: #b2b2b2;
+  --dk-color-gray-300: #999999;
+  --dk-color-gray-400: #666666;
+  --dk-color-gray-500: #30302f;
+  --dk-color-gray-600: #202020;
+  --dk-color-gray-700: #1f1f1f;
+  --dk-color-gray-800: #131313;
+  --dk-color-gray-900: #070707;
+
+  --dk-color-fg0: var(--dk-color-white); /* Maximum-contrast text */
+  --dk-color-fg1: var(--dk-color-gray-100); /* Body text, default */
+  --dk-color-fg2: var(--dk-color-gray-200); /* De-emphasized text */
+  --dk-color-fg3: var(--dk-color-gray-300); /* Placeholder, captions */
+  --dk-color-fg4: var(--dk-color-gray-400); /* Disabled, subtle metadata */
+  --dk-color-fgAccent1: var(--dk-color-pumpkin-500); /* Accent text, links */
+  --dk-color-fgAccent2: var(--dk-color-pumpkin-700); /* Secondary accent text */
+  --dk-color-fgSecondary1: var(--dk-color-purple-300);
+  --dk-color-fgSuccess: var(--dk-color-green-300);
+  --dk-color-fgModerate: var(--dk-color-amber-300);
+  --dk-color-fgSerious: var(--dk-color-red-400);
+
+  --dk-color-bg0: var(--dk-color-black); /* Deepest backdrop */
+  --dk-color-bg1: var(--dk-color-gray-900); /* Page, cards, panels */
+  --dk-color-bg2: var(--dk-color-gray-800); /* Raised surface (popovers) */
+  --dk-color-bg3: var(--dk-color-gray-700); /* Inputs, inert chrome */
+  --dk-color-bgAccent1: var(--dk-color-pumpkin-900); /* Accent surface */
+  --dk-color-bgAccent2: var(--dk-color-pumpkin-800); /* Elevated accent surface */
+  --dk-color-bgSecondary1: var(--dk-color-purple-900);
+  --dk-color-bgSuccess: var(--dk-color-green-900);
+  --dk-color-bgModerate: var(--dk-color-amber-900);
+  --dk-color-bgSerious: var(--dk-color-red-900);
+
+  --dk-color-separator1: var(--dk-color-gray-600); /* Hairlines, dividers */
+  --dk-color-separator2: var(--dk-color-gray-500); /* Secondary divider */
+  --dk-color-separatorAccent: var(--dk-color-pumpkin-800);
+}
+
+/* Semantic: light ---------------------------------------------------------- */
+[data-dk-theme='light'] {
+  color-scheme: light;
+
+  --dk-color-gray-100: #fdfdfc;
+  --dk-color-gray-200: #efefec;
+  --dk-color-gray-300: #e2e2df;
+  --dk-color-gray-400: #dbdbd8;
+  --dk-color-gray-500: #bdbdbb;
+  --dk-color-gray-600: #707070;
+  --dk-color-gray-700: #636363;
+  --dk-color-gray-800: #4d4d4d;
+  --dk-color-gray-900: #3b3b3b;
+
+  --dk-color-fg0: var(--dk-color-black);
+  --dk-color-fg1: var(--dk-color-gray-900);
+  --dk-color-fg2: var(--dk-color-gray-800);
+  --dk-color-fg3: var(--dk-color-gray-700);
+  --dk-color-fg4: var(--dk-color-gray-600);
+  --dk-color-fgAccent1: var(--dk-color-pumpkin-600);
+  --dk-color-fgAccent2: var(--dk-color-pumpkin-500);
+  --dk-color-fgSecondary1: var(--dk-color-purple-600);
+  --dk-color-fgSuccess: var(--dk-color-green-600);
+  --dk-color-fgModerate: var(--dk-color-amber-600);
+  --dk-color-fgSerious: var(--dk-color-red-600);
+
+  --dk-color-bg0: var(--dk-color-white);
+  --dk-color-bg1: var(--dk-color-gray-100);
+  --dk-color-bg2: var(--dk-color-gray-200);
+  --dk-color-bg3: var(--dk-color-gray-300);
+  --dk-color-bgAccent1: var(--dk-color-pumpkin-100);
+  --dk-color-bgAccent2: var(--dk-color-pumpkin-200);
+  --dk-color-bgSecondary1: var(--dk-color-purple-100);
+  --dk-color-bgSuccess: var(--dk-color-green-100);
+  --dk-color-bgModerate: var(--dk-color-amber-100);
+  --dk-color-bgSerious: var(--dk-color-red-100);
+
+  --dk-color-separator1: var(--dk-color-gray-400);
+  --dk-color-separator2: var(--dk-color-gray-500);
+  --dk-color-separatorAccent: var(--dk-color-pumpkin-200);
+}
