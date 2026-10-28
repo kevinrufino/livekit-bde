@@ -141,6 +141,15 @@
   --animate-rise: dk-rise 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   --animate-pixel-blink: dk-pixel-blink 900ms steps(1, end) infinite;
 
+  --animate-step-in: dk-step-in 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+
+  @keyframes dk-step-in {
+    from {
+      opacity: 0;
+      transform: translateX(16px);
+    }
+  }
+
   @keyframes dk-rise {
     from {
       opacity: 0;
@@ -185,5 +194,55 @@
   .bg-dot-pattern {
     background-image: radial-gradient(var(--dk-color-separator1) 1px, transparent 1px);
     background-size: 12px 12px;
+  }
+}
+
+/*
+ * Dithered state wipe (see DitherSurface). The new state's layer is revealed left →
+ * right: a solid bar of width --dk-wipe, followed by a Bayer-dithered edge strip.
+ * Stepped timing keeps it chunky, like a pixel progress bar.
+ */
+@property --dk-wipe {
+  syntax: '<length-percentage>';
+  inherits: false;
+  initial-value: 100%;
+}
+
+@keyframes dk-wipe {
+  from {
+    --dk-wipe: calc(0% - var(--dk-edge-w));
+  }
+  to {
+    --dk-wipe: 100%;
+  }
+}
+
+@layer components {
+  .dk-wipe {
+    -webkit-mask-image: linear-gradient(#000, #000), var(--dk-edge);
+    mask-image: linear-gradient(#000, #000), var(--dk-edge);
+    -webkit-mask-size:
+      max(0px, var(--dk-wipe)) 100%,
+      var(--dk-edge-w) var(--dk-edge-h);
+    mask-size:
+      max(0px, var(--dk-wipe)) 100%,
+      var(--dk-edge-w) var(--dk-edge-h);
+    -webkit-mask-position:
+      0 0,
+      var(--dk-wipe) 0;
+    mask-position:
+      0 0,
+      var(--dk-wipe) 0;
+    -webkit-mask-repeat: no-repeat, repeat-y;
+    mask-repeat: no-repeat, repeat-y;
+    animation: dk-wipe 360ms steps(14, end) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dk-wipe {
+      animation: none;
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
   }
 }

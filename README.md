@@ -76,7 +76,7 @@ is DeadKit Orange.
 **Theme.** Set with `data-dk-theme="dark" | "light"` on any element. Tailwind's
 `dark:` and `light:` variants follow it.
 
-**Fonts.** `font-display` (Space Grotesk), `font-sans` (Public Sans), `font-mono`
+**Fonts.** `font-display` (Space Mono), `font-sans` (Public Sans), `font-mono`
 (JetBrains Mono).
 
 **Dependencies.** [`motion`](https://motion.dev) is installed if you want it. CSS-only is

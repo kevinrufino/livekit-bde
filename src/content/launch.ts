@@ -41,19 +41,24 @@ export const launch = {
       'You get sandbox keys and start haunting.',
     ],
 
+    // One question per step, in order.
     fields: {
-      name: { label: 'Name', placeholder: 'Vincent Price' },
-      email: { label: 'Work email', placeholder: 'vincent@hauntedhill.com' },
-      company: { label: 'Company', placeholder: 'Haunted Hill Labs' },
-      industry: { label: 'Industry', placeholder: 'Select an industry' },
+      name: { question: 'First, what should we call you?', placeholder: 'Vincent Price' },
+      email: {
+        question: 'Where can a medium reach you?',
+        placeholder: 'vincent@hauntedhill.com',
+        hint: "Your work email. We'll only use it to reply to you.",
+      },
+      company: { question: 'Which company are you with?', placeholder: 'Haunted Hill Labs' },
+      industry: { question: 'What industry are you in?' },
       referral: {
-        label: 'How did you hear about us?',
+        question: 'How did you hear about Séance?',
         placeholder: 'A podcast, a colleague, a whisper in the walls…',
       },
       useCase: {
-        label: 'How are you planning to use Séance?',
-        placeholder: 'Who should your agent talk to, and what should it say?',
-        hint: 'The more specific, the better we can prepare.',
+        question: 'What will your agent do?',
+        placeholder: 'Who should it talk to, and what should it say?',
+        hint: 'Optional, but the more specific, the better we can prepare.',
       },
     },
 
@@ -72,7 +77,13 @@ export const launch = {
       { value: 'other', label: 'Other' },
     ],
 
-    privacyNote: "We'll only use this to reply to you.",
+    controls: {
+      back: 'Back',
+      next: 'Continue',
+      enter: 'Enter ↵',
+      enterMultiline: 'Ctrl/⌘ + Enter',
+      step: (n: number, total: number) => `Question ${n} of ${total}`,
+    },
     submitLabel: 'Request a séance',
     pendingLabel: 'Summoning…',
     success: {

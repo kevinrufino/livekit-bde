@@ -126,7 +126,7 @@ export default function TokensPage() {
       <section className="space-y-6">
         <h2 className="font-display text-3xl text-fg0">Type</h2>
         <div className="grid gap-2 sm:grid-cols-3">
-          <p className="font-display text-2xl">Display — Space Grotesk</p>
+          <p className="font-display text-2xl">Display — Space Mono</p>
           <p className="font-sans text-2xl">Sans — Public Sans</p>
           <p className="font-mono text-2xl">Mono — JetBrains Mono</p>
         </div>

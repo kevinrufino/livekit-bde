@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { JetBrains_Mono, Public_Sans, Space_Grotesk } from 'next/font/google';
+import { JetBrains_Mono, Public_Sans, Space_Mono } from 'next/font/google';
 import './globals.css';
 
 const sans = Public_Sans({
@@ -12,9 +12,10 @@ const mono = JetBrains_Mono({
   subsets: ['latin'],
 });
 
-const display = Space_Grotesk({
+const display = Space_Mono({
   variable: '--font-dk-display',
   subsets: ['latin'],
+  weight: ['400', '700'],
 });
 
 export const metadata: Metadata = {
