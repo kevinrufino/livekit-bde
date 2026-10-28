@@ -19,7 +19,7 @@ pnpm dev
 
 ## The brief
 
-Plan for about **2 hours**. We'd rather see a few things done with real care than
+Plan for about **45 minutes**. We'd rather see a few things done with real care than
 everything done quickly — it's fine to leave parts unfinished, just tell us what you'd
 do next.
 
@@ -51,8 +51,8 @@ this page memorable. It's your call what that is.
 ### What we're looking for
 
 - Components that another engineer could pick up and reuse without reading their source.
-- Brand colors and assets used with intent — through the tokens, not around them.
-- Motion and interaction that feel purposeful, not decorative.
+- Brand colors and assets used with intent.
+- Motion and interaction that feel purposeful.
 - Something that looks good. Works in light and dark, on mobile and desktop.
 - Respect for accessibility, including `prefers-reduced-motion`.
 
@@ -67,7 +67,7 @@ this page memorable. It's your call what that is.
 | `src/lib/cn.ts`         | `cn()` class-merging helper                                   |
 | `src/components/`       | A dev-only theme toggle — the rest is yours                   |
 
-**Tokens.** Tailwind's default palette has been replaced: only DeadKit colors exist.
+**Tokens.** DeadKit color tokens have been added to the Tailwind config.
 Prefer the semantic utilities (`text-fg1`, `bg-bg2`, `border-separator1`,
 `text-fgAccent1`) so things work in both themes; reach for the raw scale
 (`bg-pumpkin-500`) when the brand color itself is the point. `pumpkin-500` (#F97A1F)
