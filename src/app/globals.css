@@ -136,6 +136,29 @@
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
 }
 
+/* Motion. Pair with `motion-safe:` so reduced-motion users get the end state. */
+@theme {
+  --animate-rise: dk-rise 420ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-pixel-blink: dk-pixel-blink 900ms steps(1, end) infinite;
+
+  @keyframes dk-rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+
+  @keyframes dk-pixel-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.2;
+    }
+  }
+}
+
 @layer base {
   *,
   ::after,

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { IntakeSection } from '@/components/intake-section';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { launch } from '@/content/launch';
 
@@ -10,7 +11,8 @@ import { launch } from '@/content/launch';
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col">
-      <header className="flex items-center justify-between border-b px-6 py-4">
+      {/* Fixed height so the hero below can fill exactly one screen. */}
+      <header className="flex h-16 items-center justify-between border-b px-6">
         <div className="flex items-center gap-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/brand/pumpkin.svg" alt="" width={28} height={28} />
@@ -24,18 +26,27 @@ export default function Home() {
         </nav>
       </header>
 
-      <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col justify-center gap-6 px-6 py-24">
-        <p className="font-mono text-xs text-fgAccent1 uppercase">{launch.eyebrow}</p>
-        <h1 className="font-display text-5xl text-fg0">{launch.headline}</h1>
-        <p className="max-w-xl text-lg text-fg2">{launch.subhead}</p>
-        <div className="flex gap-3">
-          <a href={launch.primaryCta.href} className="bg-pumpkin-500 px-4 py-2 text-black">
-            {launch.primaryCta.label}
-          </a>
-          <a href={launch.secondaryCta.href} className="border px-4 py-2">
-            {launch.secondaryCta.label}
-          </a>
-        </div>
+      <main className="flex flex-1 flex-col">
+        <section
+          aria-labelledby="hero-title"
+          className="mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-5xl flex-col justify-center gap-6 px-6 py-24"
+        >
+          <p className="font-mono text-xs text-fgAccent1 uppercase">{launch.eyebrow}</p>
+          <h1 id="hero-title" className="font-display text-5xl text-fg0">
+            {launch.headline}
+          </h1>
+          <p className="max-w-xl text-lg text-fg2">{launch.subhead}</p>
+          <div className="flex gap-3">
+            <a href={launch.primaryCta.href} className="bg-pumpkin-500 px-4 py-2 text-black">
+              {launch.primaryCta.label}
+            </a>
+            <a href={launch.secondaryCta.href} className="border px-4 py-2">
+              {launch.secondaryCta.label}
+            </a>
+          </div>
+        </section>
+
+        <IntakeSection />
       </main>
     </div>
   );
